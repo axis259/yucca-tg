@@ -1,0 +1,16 @@
+[Unit]
+Description=Yucca tg keys TG Bot
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=user
+SyslogIdentifier=yucca-tg-keys
+WorkingDirectory=/home/user/yucca-tg
+ExecStart=/home/user/yucca-tg/yucca-tg-keys.sh
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target
